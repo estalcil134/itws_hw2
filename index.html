@@ -5,9 +5,6 @@
     <title>Hexed!</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
     <!--<script type="text/javascript" src="resources/" -->
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="test.js"></script>
     <!-- <style>.slider{margin: 10px; border:1px solid blue; height:10px;}</style> -->
 </head>
 <body>
@@ -16,7 +13,7 @@
 
         <h2>Here's how to play:</h2>
         <p>Use the sliders to choose...... blah blah blah</p>
-
+        <div id="game"></div>
         <div class="left">
             <p id="red_value"></p>
             <input type="range" min="0" max="255" value="127" class="slider" id="red">
@@ -52,22 +49,12 @@
 
     </div>
 
-<<<<<<< HEAD
-<script>
-    $("#page-wrapper").hexed();
-</script>
+<script src="resources/resources/jquery-1.4.3.min.js"></script>
+    <script src="resources/hw2.js"></script>
+    <script src="test.js"></script>
     
-
-<<<<<<< HEAD
-
-=======
-
-    <script src="resources/resources/jquery-1.4.3.min.js"></script>
-    <script src="resources/hw2.js"></script>
->>>>>>> ffba3299957c9f4b915586aa448e7473e54537c7
-=======
-    <script src="resources/resources/jquery-1.4.3.min.js"></script>
-    <script src="resources/hw2.js"></script>
->>>>>>> ffba3299957c9f4b915586aa448e7473e54537c7
+<script>
+    $("#game").hexed();
+</script>
 </body>
 </html>

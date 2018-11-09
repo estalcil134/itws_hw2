@@ -18,3 +18,26 @@ footer {
     text-align: center;
     font-size: 10px;
 }
+
+#red, #green, #blue{
+	float: left;
+    clear: left;
+    width: 300px;
+}
+#red_value, #green_value, #blue_value {
+
+}
+
+.left {
+	float: left;
+	width: 50%;
+	height: 70px;
+}
+.right {
+	float: right;
+	width: 50%;
+	height: 70px;
+}
+#color {
+	background-color: #000000;
+}

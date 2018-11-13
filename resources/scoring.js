@@ -3,7 +3,9 @@ $(document).ready(function() {
     let expectedVal = 3; //what user guesses
     let actualVal = 3; //$("#hex_value").val(); //what the color actually is
     let difficulty = $("#difficulty_val").val();
-    let milliseconds_taken = 4;
+    let milliseconds_taken = 4; //how to figure out time until submit?
+    //https://stackoverflow.com/questions/29158573/calculate-the-time-taken-until-a-submit-button-is-clicked
+
 
     //Calculate percentage
     let percentRed = (Math.abs(expectedVal - actualVal) / 255) * 100;

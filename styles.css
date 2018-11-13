@@ -15,12 +15,52 @@ h1, h2 {
     text-align: center;
 }
 
+
+.dot {
+  height: 200px;
+  width: 200px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#colors {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden; 
+  text-align: center;
+}
+
+#container {
+  background-color: black;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+#random {
+  margin-right: 10px;
+}
 footer {
 	padding-top: 90%;
     text-align: center;
     font-size: 10px;
 }
 
+#random_circ {
+  margin-right: 10%;
+  margin-left: auto;
+  display: block;
+  background-color: black;
+  height: 40px;
+  font-size:1.3em; 
+  font-weight: bold;
+  border-radius: 5px;
+}
 
 #red_value, #green_value, #blue_value {
 
@@ -95,3 +135,4 @@ form
 #blue.slider::-webkit-slider-thumb{
 	background: blue; 
 }
+

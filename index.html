@@ -12,7 +12,12 @@
         <h1>Let's play Hexed!</h1>
 
         <h2>Here's how to play:</h2>
-        <p>Use the sliders to choose...... blah blah blah</p>
+        <div id = "container">
+          <div id = "colors">
+            <span class="dot" id = "random"></span>
+            <span class="dot" id = "answer"></span>
+          </div>
+        </div>
         <div id="game"></div>
         <div class="left">
             <p id="red_value"></p>
@@ -30,14 +35,12 @@
         </div>
         <div class="right" id="color">
             
-        </div>
-
+      </div>
         <h2>Score</h2>
-        <p id="score"></p>
-        <footer>Made by Team 1</footer>
-
+        <p id="score"></p>    
     </div>
-
+    <button type="button" id = "random_circ">Next Random Color!!!</button>
+    <footer>Made by Team 1</footer>
 <script src="resources/resources/jquery-1.4.3.min.js"></script>
     <script src="resources/hw2.js"></script>
     <script src="test.js"></script>

@@ -21,11 +21,7 @@ footer {
     font-size: 10px;
 }
 
-#red, #green, #blue{
-	float: left;
-    clear: left;
-    width: 300px;
-}
+
 #red_value, #green_value, #blue_value {
 
 }
@@ -43,6 +39,7 @@ footer {
 #color {
 	border-style: solid;
 	border-width: 3px;
+	border-radius: 15px;
 	background-color: #000000;
 }
 form
@@ -53,12 +50,13 @@ form
 .slider {
     -webkit-appearance: none;
     width: 100%;
-    height: 25px;
+    height: 15px;
     background: #d3d3d3;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
+    border-radius: 15px;
 }
 
 .slider:hover {
@@ -72,6 +70,7 @@ form
     height: 25px;
     background: #4CAF50;
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .slider::-moz-range-thumb {
@@ -79,4 +78,20 @@ form
     height: 25px;
     background: #4CAF50;
     cursor: pointer;
+}
+
+#red, #green, #blue{
+	float: left;
+    clear: left;
+    width: 300px;
+}
+
+#red.slider::-webkit-slider-thumb{
+	background: red; 
+}
+#green.slider::-webkit-slider-thumb{
+	background: green; 
+}
+#blue.slider::-webkit-slider-thumb{
+	background: blue; 
 }

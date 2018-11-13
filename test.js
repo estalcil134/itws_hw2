@@ -1,5 +1,5 @@
-function temp(start)
-{
+function start(start)
+{ // Generate the form for difficulty selection and number of turns
   if (!$("#difficulty").length)
     {
       $("#game").append('<form>\

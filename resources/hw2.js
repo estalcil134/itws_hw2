@@ -33,6 +33,26 @@ function val_to_hexa3(val1, val2, val3){
 }
 
 $(document).ready(function(){
+
+  $("#random_circ").click(function() {
+   
+   var are = Math.floor(Math.random() * 255);
+   var r = (are).toString(16);
+   var r_inv = (255 - are).toString(16);
+   var ge = Math.floor(Math.random() * 255);
+   var g = (ge).toString(16);
+   var g_inv = (255 - ge).toString(16);
+   var be = Math.floor(Math.random() * 255);
+   var b = (be).toString(16);
+   var b_inv = (255 - be).toString(16);
+   var hexid = "#" + r + g + b;
+   var hexid_inv = "#" + r_inv + g_inv + b_inv;
+   console.log(hexid);
+   var dot = document.getElementById("random");
+   dot.style.backgroundColor = hexid;
+   var but = document.getElementById("random_circ");
+   but.style.color = hexid;
+ });
 	var r_slider = document.getElementById("red");
 	var g_slider = document.getElementById("green");
 	var b_slider = document.getElementById("blue");

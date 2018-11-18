@@ -100,9 +100,9 @@ $(document).ready(function(){
 
 
 	//Calculate percentage
-	let percentRed = (Math.abs(r_slider.value - are) / 255) * 100;
-	let percentGreen = (Math.abs(g_slider.value - ge) / 255) * 100;
-	let percentBlue = (Math.abs(b_slider.value - be) / 255) * 100;
+	var percentRed = (Math.abs(r_slider.value - are) / 255) * 100;
+	var percentGreen = (Math.abs(g_slider.value - ge) / 255) * 100;
+	var percentBlue = (Math.abs(b_slider.value - be) / 255) * 100;
 
 	if(percentRed < 0) {
 			percentRed = 0;

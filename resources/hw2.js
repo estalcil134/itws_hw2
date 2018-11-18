@@ -67,25 +67,28 @@ $(document).ready(function(){
 	g_output.innerHTML = "Green: " + g_slider.value;
 	b_output.innerHTML = "Blue: " + b_slider.value;
 	hex_output.innerHTML = "Color in Hexadecimal Form: " + val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
-	color_block.style.backgroundColor = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
+	//color_block.style.backgroundColor = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
 
 	r_slider.oninput = function() {
 		var tmp = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
   		r_output.innerHTML = "Red: " + r_slider.value;
   		hex_output.innerHTML = "Color in Hexadecimal Form: " + tmp;
-  		color_block.style.backgroundColor = tmp;
+  		//color_block.style.backgroundColor = tmp;
+  		$("#answer").css("backgroundColor", tmp);
 	}
 	g_slider.oninput = function() {
 		var tmp = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
   		g_output.innerHTML = "Green: " + g_slider.value;
   		hex_output.innerHTML = "Color in Hexadecimal Form: #" + tmp;
-  		color_block.style.backgroundColor = tmp;
+  		//color_block.style.backgroundColor = tmp;
+  		$("#answer").css("backgroundColor", tmp);
 	}
 	b_slider.oninput = function() {
 		var tmp = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
   		b_output.innerHTML = "Blue: " + b_slider.value;
   		hex_output.innerHTML = "Color in Hexadecimal Form: #" + tmp;
-  		color_block.style.backgroundColor = tmp;
+  		//color_block.style.backgroundColor = tmp;
+  		$("#answer").css("backgroundColor", tmp);
 	}
 
 	var timeStart = new Date();

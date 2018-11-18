@@ -49,7 +49,7 @@ function temp()
         <button id="submit_num_turns" type="button" onclick="set_game_param(this, \'num_of_turns\');">Confirm</button>\
       </div>\
     </form>\
-    <button type=\'button\' onclick=\'$(\"game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>');
+    <button type=\'button\' id=\'start\' onclick=\'$(\"game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>');
       $(document).ready(function(){
   var r_slider = document.getElementById("red");
   var g_slider = document.getElementById("green");
@@ -207,8 +207,8 @@ $("#game").append('<form>\
     // If difficulty is fixed, 
     if ($("#difficulty_val").attr("disabled") && $("#num_of_turns").attr("disabled"))
     { // If they are both set, start the game.
-      console.log("hi");
-      console.log(options);
+      document.getElementById("start").innerHTML="Restart";
+      $("#random_circ").trigger("click");
     }
     else
     {

@@ -28,7 +28,7 @@ h1, h2 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  overflow: hidden; 
+  overflow: hidden;
   text-align: center;
 }
 
@@ -57,7 +57,7 @@ footer {
   display: block;
   background-color: black;
   height: 40px;
-  font-size:1.3em; 
+  font-size:1.3em;
   font-weight: bold;
   border-radius: 5px;
 }
@@ -129,12 +129,15 @@ form
 }
 
 #red.slider::-webkit-slider-thumb{
-	background: red; 
+	background: red;
 }
 #green.slider::-webkit-slider-thumb{
-	background: green; 
+	background: green;
 }
 #blue.slider::-webkit-slider-thumb{
-	background: blue; 
+	background: blue;
 }
 
+#scoreTotal {
+  font-size: 30px;
+}

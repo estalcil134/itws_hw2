@@ -35,7 +35,7 @@ function val_to_hexa3(val1, val2, val3){
 $(document).ready(function(){
 
   $("#random_circ").click(function() {
-   
+
    var are = Math.floor(Math.random() * 255);
    var r = (are).toString(16);
    var r_inv = (255 - are).toString(16);
@@ -88,6 +88,43 @@ $(document).ready(function(){
   		color_block.style.backgroundColor = tmp;
 	}
 
+	var timeStart = new Date();
+
+  $("#random_circ").on('click', function() {
+    var timeEnd = new Date();
+    var milliseconds_taken = timeEnd - timeStart;
+    console.log(milliseconds_taken);
+  });
+
+	var difficulty = $("#difficulty_val").val();
+
+
+	//Calculate percentage
+	let percentRed = (Math.abs(r_slider.value - are) / 255) * 100;
+	let percentGreen = (Math.abs(g_slider.value - ge) / 255) * 100;
+	let percentBlue = (Math.abs(b_slider.value - be) / 255) * 100;
+
+	if(percentRed < 0) {
+			percentRed = 0;
+	}
+	if(percentBlue < 0) {
+			percentBlue = 0;
+	}
+	if(percentGreen < 0) {
+			percentGreen = 0;
+	}
+
+	var totalPercentOff = (percentRed + percentGreen + percentBlue) / 3;
+
+	//Calculate final score
+	var finalScore = 15 - difficulty - totalPercentOff;
+	finalScore = finalScore / (15 - difficulty);
+	finalScore = finalScore * (15000 - milliseconds_taken);
+
+	//appending final score to the user
+	var totalScore = document.getElementById("scoreTotal");
+	totalScore.innerHTML += finalScore;
+	//$("#scoreTotal").append(finalScore);
+
 
 });
-

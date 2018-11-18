@@ -46,9 +46,11 @@ h1, h2 {
   margin-right: 10px;
 }
 footer {
-	padding-top: 90%;
-    text-align: center;
+	  text-align: center;
     font-size: 10px;
+    width:700px;
+    background-color:white;
+    margin:auto;
 }
 
 #random_circ {
@@ -140,4 +142,10 @@ form
 
 #scoreTotal {
   font-size: 30px;
+  text-align:center;
+}
+
+#label
+{
+  text-align:center;
 }

@@ -53,6 +53,10 @@ function set_game_param(button, id)
           <span class="dot" id = "answer"></span>\
         </div>\
       </div>\
+      <div id="label">\
+        <p class="left">Color:</p>\
+        <p class="right">Your Guess</p>\
+      </div>\
       <div id="game">\
         <form>\
           <div id="difficulty">\
@@ -196,11 +200,10 @@ function set_game_param(button, id)
           console.log("15-d-p" + (15 - difficulty - avgPercentOff).toString(10));
           console.log("15-d" + (15 - difficulty).toString(10));
           console.log("final" + (finalScore).toString(10));
-          finalScore = (finalScore < 0 ? 0:finalScore);
+          finalScore = (finalScore < 0 ? 0:Number(finalScore.toFixed(2)));
           //appending final score to the user
           finalScore += Number(document.getElementById("scoreTotal").innerHTML);
           document.getElementById("scoreTotal").innerHTML = finalScore;
-          //$("#scoreTotal").append(finalScore);
         }
       }      
     });   
@@ -221,6 +224,7 @@ function set_game_param(button, id)
       this.data("options", options);
       this.data("turns_left", options["turns"]);
       $("#random_circ").trigger("click");
+      $("#scoreTotal").empty();
     }
     else
     { // Output error message

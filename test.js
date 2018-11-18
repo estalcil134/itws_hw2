@@ -43,77 +43,62 @@ function set_game_param(button, id)
   {
     // Generate the form for difficulty selection and number of turns
     $(document).ready(function(){
-    $("body").append('<div id="page-wrapper">\
-    <h1>Let\'s play Hexed!</h1>\
-    <h2>Here\'s how to play:</h2>\
-    <p>Use the sliders to choose...... blah blah blah</p>\
-    <div id = "container">\
-      <div id = "colors">\
-        <span class="dot" id = "random"></span>\
-        <span class="dot" id = "answer"></span>\
+      $("body").append('<div id="page-wrapper">\
+      <h1>Let\'s play Hexed!</h1>\
+      <h2>Here\'s how to play:</h2>\
+      <p>Use the sliders to choose...... blah blah blah</p>\
+      <div id = "container">\
+        <div id = "colors">\
+          <span class="dot" id = "random"></span>\
+          <span class="dot" id = "answer"></span>\
+        </div>\
       </div>\
-    </div>\
-    <div id="game">\
-      <form>\
-        <div id="difficulty">\
-          <label for="difficulty_val">Difficulty</label>\
-          <select id="difficulty_val" required>\
-            <option value = "0">0</option>\
-            <option value = "1">1</option>\
-            <option value = "2">2</option>\
-            <option value = "3">3</option>\
-            <option value = "4">4</option>\
-            <option value = "5" selected>5</option>\
-            <option value = "6">6</option>\
-            <option value = "7">7</option>\
-            <option value = "8">8</option>\
-            <option value = "9">9</option>\
-            <option value = "10">10</option>\
-          </select>\
-          <button id="submit_difficulty" type="button" onclick="set_game_param(this, \'difficulty_val\');">Confirm</button>\
-        </div>\
-        <div>\
-          <label for="num_of_turns">Desired Number oF Turns</label>\
-          <input type="number" id="num_of_turns" min="1" value="10"></input>\
-          <button id="submit_num_turns" type="button" onclick="set_game_param(this, \'num_of_turns\');">Confirm</button>\
-        </div>\
-      </form>\
-      <button type=\'button\' id=\'start\' onclick=\'$(\"#game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>\
-      <button type="button" id = "random_circ">Next Random Color!!!</button>\
-    </div>\
-    <div class="left">\
-      <p id="red_value"></p>\
-      <input type="range" min="0" max="255" value="127" class="slider" id="red">\
-      <br/>\
-      <p id="green_value"></p>\
-      <input type="range" min="0" max="255" value="127" class="slider" id="green">\
-      <br/>\
-      <p id="blue_value"></p>\
-      <input type="range" min="0" max="255" value="127" class="slider" id="blue">\
-      <br/>\
-      <p id="hex_value"></p>\
-    </div>\
-    <h2>Score</h2>\
-      <p id="score"></p>\
-      <p id="scoreTotal"></p>\
-  </div><footer>Made by Team 1</footer>');
-    $("#random_circ").click(function() {
-      var are = Math.floor(Math.random() * 255);
-      var r = (are).toString(16);
-      var r_inv = (255 - are).toString(16);
-      var ge = Math.floor(Math.random() * 255);
-      var g = (ge).toString(16);
-      var g_inv = (255 - ge).toString(16);
-      var be = Math.floor(Math.random() * 255);
-      var b = (be).toString(16);
-      var b_inv = (255 - be).toString(16);
-      var hexid = "#" + r + g + b;
-      var hexid_inv = "#" + r_inv + g_inv + b_inv;
-//      console.log(hexid);
-      var dot = document.getElementById("random");
-      dot.style.backgroundColor = hexid;
-      var but = document.getElementById("random_circ");
-      but.style.color = hexid;});
+      <div id="game">\
+        <form>\
+          <div id="difficulty">\
+            <label for="difficulty_val">Difficulty</label>\
+            <select id="difficulty_val" required>\
+              <option value = "0">0</option>\
+              <option value = "1">1</option>\
+              <option value = "2">2</option>\
+              <option value = "3">3</option>\
+              <option value = "4">4</option>\
+              <option value = "5" selected>5</option>\
+              <option value = "6">6</option>\
+              <option value = "7">7</option>\
+              <option value = "8">8</option>\
+              <option value = "9">9</option>\
+              <option value = "10">10</option>\
+            </select>\
+            <button id="submit_difficulty" type="button" onclick="set_game_param(this, \'difficulty_val\');">Confirm</button>\
+          </div>\
+          <div>\
+            <label for="num_of_turns">Desired Number oF Turns</label>\
+            <input type="number" id="num_of_turns" min="1" value="10"></input>\
+            <button id="submit_num_turns" type="button" onclick="set_game_param(this, \'num_of_turns\');">Confirm</button>\
+          </div>\
+        </form>\
+        <button type=\'button\' id=\'start\' onclick=\'$(\"#game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>\
+        <button type="button" id = "random_circ" style="display:none">Next Random Color!!!</button>\
+      </div>\
+      <div class="left">\
+        <p id="red_value"></p>\
+        <input type="range" min="0" max="255" value="127" class="slider" id="red">\
+        <br/>\
+        <p id="green_value"></p>\
+        <input type="range" min="0" max="255" value="127" class="slider" id="green">\
+        <br/>\
+        <p id="blue_value"></p>\
+        <input type="range" min="0" max="255" value="127" class="slider" id="blue">\
+        <br/>\
+        <p id="hex_value"></p>\
+      </div>\
+      <div class="right">\
+        <h2>Turns Left: <span id="turns"></span></h2>\
+        <h2>Score</h2>\
+        <p id="scoreTotal"></p>\
+      </div>\
+    </div><footer>Made by Team 1</footer>');
     var r_slider = document.getElementById("red");
     var g_slider = document.getElementById("green");
     var b_slider = document.getElementById("blue");
@@ -148,53 +133,91 @@ function set_game_param(button, id)
         hex_output.innerHTML = "Color in Hexadecimal Form: #" + tmp;
         color_block.style.backgroundColor = tmp;
     }
-    var timeStart = new Date();
+    // Ensure both circles have the same starting colors
+    $("#random").css("backgroundColor","#7f7f7f");
+    $("#random_circ").click(function() {
+      if ($("#game").data("options")["turns"] == 0)
+      {
+        $("#difficulty_val").attr("disabled", false);
+        $("#submit_difficulty").css("display", "inline");
+        $("#num_of_turns").attr("disabled", false);
+        $("#submit_num_turns").css("display", "inline");
+        $("#start").html("New Game");
+        $("#random_circ").css("display","none");
+        $("#turns").html($("#game").data("options")["turns"]);
+      }
+      else
+      {
+        var are = Math.floor(Math.random() * 255);
+        var r = (are).toString(16);
+        var r_inv = (255 - are).toString(16);
+        var ge = Math.floor(Math.random() * 255);
+        var g = (ge).toString(16);
+        var g_inv = (255 - ge).toString(16);
+        var be = Math.floor(Math.random() * 255);
+        var b = (be).toString(16);
+        var b_inv = (255 - be).toString(16);
+        var hexid = "#" + r + g + b;
+        //var hexid_inv = "#" + r_inv + g_inv + b_inv;
+        //console.log(hexid);
+        // Set the colors of the random circle and the next button
+        var dot = document.getElementById("random");
+        dot.style.backgroundColor = hexid;
+        var but = document.getElementById("random_circ");
+        but.style.color = hexid;
+        // Reset the answer sliders
+        r_slider.value = g_slider.value = b_slider.value = 127;
+        $("#answer").css("backgroundColor","#7f7f7f");
+        // Update turns left
+        $("#turns").html($("#game").data("options")["turns"]--);
+        // Scoreing calculation
+        var time = new Date();
+        if ((!$("#game").data("s_time")) || ($("#game").data("s_time") == -1))
+        {
+          $("#game").data("s_time", time);
+        }
+        else
+        {
+          var milliseconds_taken = new Date() - $("#game").data("s_time");
+          var difficulty = Number($("#game").data("options")["difficulty"]);
+          $("#game").data("s_time", -1);
+          //Calculate percentage
+          let percentRed = (Math.abs(r_slider.value - are) / 255) * 100;
+          let percentGreen = (Math.abs(g_slider.value - ge) / 255) * 100;
+          let percentBlue = (Math.abs(b_slider.value - be) / 255) * 100;
 
-  $("#random_circ").on("click", function() {
-    var timeEnd = new Date();
-    var milliseconds_taken = timeEnd - timeStart;
-    console.log(milliseconds_taken);
-  });
+          var avgPercentOff = (percentRed + percentGreen + percentBlue) / 3;
 
-  var difficulty = $("#difficulty_val").val();
-
-
-  //Calculate percentage
-  let percentRed = (Math.abs(r_slider.value - are) / 255) * 100;
-  let percentGreen = (Math.abs(g_slider.value - ge) / 255) * 100;
-  let percentBlue = (Math.abs(b_slider.value - be) / 255) * 100;
-
-  if(percentRed < 0) {
-      percentRed = 0;
-  }
-  if(percentBlue < 0) {
-      percentBlue = 0;
-  }
-  if(percentGreen < 0) {
-      percentGreen = 0;
-  }
-
-  var totalPercentOff = (percentRed + percentGreen + percentBlue) / 3;
-
-  //Calculate final score
-  var finalScore = 15 - difficulty - totalPercentOff;
-  finalScore = finalScore / (15 - difficulty);
-  finalScore = finalScore * (15000 - milliseconds_taken);
-
-  //appending final score to the user
-  var totalScore = document.getElementById("scoreTotal");
-  totalScore.innerHTML += finalScore;
-  //$("#scoreTotal").append(finalScore);
-  });
+          //Calculate final score
+          var finalScore = ((15 - difficulty - avgPercentOff)/(15 - difficulty))*(15000 - milliseconds_taken);
+          console.log("d" + difficulty.toString(10));
+          console.log("p" + avgPercentOff.toString(10));
+          console.log("m" + (15000 - milliseconds_taken).toString(10));
+          console.log("15-d-p" + (15 - difficulty - avgPercentOff).toString(10));
+          console.log("15-d" + (15 - difficulty).toString(10));
+          console.log("final" + (finalScore).toString(10));
+          finalScore = (finalScore < 0 ? 0:finalScore);
+          //appending final score to the user
+          finalScore += Number(document.getElementById("scoreTotal").innerHTML);
+          document.getElementById("scoreTotal").innerHTML = finalScore;
+          //$("#scoreTotal").append(finalScore);
+        }
+      }      
+    });   
+    });
   };
 
   $.fn.hexed = function ( settings )
   { // difficulty is in options.difficulty  turns is in options.turns
     var options = $.extend({"difficulty":5, "turns":10}, settings);
-    // If difficulty is fixed, 
-    if ($("#difficulty_val").attr("disabled") && $("#num_of_turns").attr("disabled"))
+    if ($("#start").html() == "Restart")
+    {
+      $("body").empty().restart();
+    }
+    else if ($("#difficulty_val").attr("disabled") && $("#num_of_turns").attr("disabled"))
     { // If they are both set, start the game.
       document.getElementById("start").innerHTML="Restart";
+      $("#random_circ").css("display","block");
       this.data("options", options);
       this.data("turns_left", options["turns"]);
       $("#random_circ").trigger("click");

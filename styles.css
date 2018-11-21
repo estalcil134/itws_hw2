@@ -57,11 +57,10 @@ h1, h2
 }
 
 footer {
-	  text-align: center;
-    font-size: 10px;
-    width:700px;
-    background-color:white;
-    margin:auto;
+  position:relative;
+  font-size:10px;
+  text-align:center;
+  top:35%
 }
 
 #random_circ {

@@ -11,10 +11,20 @@ body {
     box-shadow: 5px 10px 8px #000000;
 }
 
-h1, h2 {
-    text-align: center;
+h1, h2
+{
+  text-align: center;
 }
 
+#turns_left, #score, #list {
+    text-align: center;
+    border:1px solid black;
+}
+
+#percentOff
+{
+  list-style:none;
+}
 
 .dot {
   height: 200px;
@@ -45,6 +55,7 @@ h1, h2 {
 #random {
   margin-right: 10px;
 }
+
 footer {
 	  text-align: center;
     font-size: 10px;
@@ -57,7 +68,8 @@ footer {
   margin-right: 10%;
   margin-left: auto;
   display: block;
-  background-color: black;
+  /*background-color: black;*/
+  text-shadow:2px 1px black;
   height: 40px;
   font-size:1.3em;
   font-weight: bold;

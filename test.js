@@ -1,36 +1,3 @@
-function val_to_hexa(val){
-  var ans = "";
-  var d16 = Math.floor(val / 16);
-  var m16 = val % 16;
-  if(d16 < 10){ans += d16; }
-  else{
-    if(d16 == 10){ans += "a"; }
-    if(d16 == 11){ans += "b"; }
-    if(d16 == 12){ans += "c"; }
-    if(d16 == 13){ans += "d"; }
-    if(d16 == 14){ans += "e"; }
-    if(d16 == 15){ans += "f"; }
-  }
-  if(m16 < 10){ans += m16; }
-  else{
-    if(m16 == 10){ans += "a"; }
-    if(m16 == 11){ans += "b"; }
-    if(m16 == 12){ans += "c"; }
-    if(m16 == 13){ans += "d"; }
-    if(m16 == 14){ans += "e"; }
-    if(m16 == 15){ans += "f"; }
-  }
-  return ans;
-}
-
-function val_to_hexa3(val1, val2, val3){
-  var ans = "#";
-  ans += val_to_hexa(val1);
-  ans += val_to_hexa(val2);
-  ans += val_to_hexa(val3);
-  return ans;
-}
-
 function set_game_param(button, id)
 {
   document.getElementById(id).disabled = true;
@@ -39,11 +6,51 @@ function set_game_param(button, id)
 
 (function ($)
 {
+  $.fn.options = {
+    difficulty:5,
+    turns:10
+  };
+  // Private functions
+  function val_to_hexa(val){
+  var ans = "";
+  var d16 = Math.floor(val / 16);
+  var m16 = val % 16;
+  if (d16 < 10) { ans += d16; }
+  else
+  {
+    if (d16 == 10) { ans += "a"; }
+    if (d16 == 11) { ans += "b"; }
+    if (d16 == 12) { ans += "c"; }
+    if (d16 == 13) { ans += "d"; }
+    if (d16 == 14) { ans += "e"; }
+    if (d16 == 15) { ans += "f"; }
+  }
+  if (m16 < 10) { ans += m16; }
+  else
+  {
+    if (m16 == 10){ans += "a"; }
+    if (m16 == 11){ans += "b"; }
+    if (m16 == 12){ans += "c"; }
+    if (m16 == 13){ans += "d"; }
+    if (m16 == 14){ans += "e"; }
+    if (m16 == 15){ans += "f"; }
+  }
+    return ans;
+  }
+
+  function val_to_hexa3(val1, val2, val3){
+    var ans = "#";
+    ans += val_to_hexa(val1);
+    ans += val_to_hexa(val2);
+    ans += val_to_hexa(val3);
+    return ans;
+  }
   $.fn.restart = function ()
   {
+    var obj = this;
     // Generate the form for difficulty selection and number of turns
     $(document).ready(function(){
-      $("body").append('<div id="page-wrapper">\
+      $(obj).html('<div id="page-wrapper">\
       <h1>Let\'s play Hexed!</h1>\
       <h2>Here\'s how to play:</h2>\
       <p>Use the sliders to choose...... blah blah blah</p>\
@@ -83,7 +90,6 @@ function set_game_param(button, id)
           </div>\
         </form>\
         <button type=\'button\' id=\'start\' onclick=\'$(\"#game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>\
-        <button type="button" id = "random_circ" style="display:none">Next Random Color!!!</button>\
       </div>\
       <div class="left">\
         <p id="red_value"></p>\
@@ -96,11 +102,16 @@ function set_game_param(button, id)
         <input type="range" min="0" max="255" value="127" class="slider" id="blue">\
         <br/>\
         <p id="hex_value"></p>\
+        <br/>\
       </div>\
       <div class="right">\
-        <h2>Turns Left: <span id="turns"></span></h2>\
-        <h2>Score</h2>\
-        <p id="scoreTotal"></p>\
+        <button type="button" id = "random_circ" style="display:none">Next</button>\
+        <h2 id="turns_left">Turns Left: <span id="turns"></span></h2>\
+        <h2 id="score">Score<p id="scoreTotal"></p></h2>\
+        <div id="list">\
+          <h2>Percents Off</h2>\
+          <ul id="percentOff"></ul>\
+        </div>\
       </div>\
     </div><footer>Made by Team 1</footer>');
     var r_slider = document.getElementById("red");
@@ -111,36 +122,38 @@ function set_game_param(button, id)
     var r_output = document.getElementById("red_value");
     var g_output = document.getElementById("green_value");
     var b_output = document.getElementById("blue_value");
-    var hex_output = document.getElementById("hex_value");
+    //var hex_output = document.getElementById("hex_value");
 
     r_output.innerHTML = "Red: " + r_slider.value;
     g_output.innerHTML = "Green: " + g_slider.value;
     b_output.innerHTML = "Blue: " + b_slider.value;
-    hex_output.innerHTML = "Color in Hexadecimal Form: " + val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
+    //hex_output.innerHTML = "Color in Hexadecimal Form: " + val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
     color_block.style.backgroundColor = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
 
     r_slider.oninput = function() {
       var tmp = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
         r_output.innerHTML = "Red: " + r_slider.value;
-        hex_output.innerHTML = "Color in Hexadecimal Form: " + tmp;
+        //hex_output.innerHTML = "Color in Hexadecimal Form: " + tmp;
         color_block.style.backgroundColor = tmp;
     }
     g_slider.oninput = function() {
       var tmp = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
         g_output.innerHTML = "Green: " + g_slider.value;
-        hex_output.innerHTML = "Color in Hexadecimal Form: #" + tmp;
+        //hex_output.innerHTML = "Color in Hexadecimal Form: #" + tmp;
         color_block.style.backgroundColor = tmp;
     }
     b_slider.oninput = function() {
       var tmp = val_to_hexa3(r_slider.value, g_slider.value, b_slider.value);
         b_output.innerHTML = "Blue: " + b_slider.value;
-        hex_output.innerHTML = "Color in Hexadecimal Form: #" + tmp;
+        //hex_output.innerHTML = "Color in Hexadecimal Form: #" + tmp;
         color_block.style.backgroundColor = tmp;
     }
     // Ensure both circles have the same starting colors
     $("#random").css("backgroundColor","#7f7f7f");
+
+    // Next color / Check it button
     $("#random_circ").click(function() {
-      if ($("#game").data("options")["turns"] == 0)
+      if ($("#game").data("turns_left") == 0)
       {
         $("#difficulty_val").attr("disabled", false);
         $("#submit_difficulty").css("display", "inline");
@@ -148,7 +161,7 @@ function set_game_param(button, id)
         $("#submit_num_turns").css("display", "inline");
         $("#start").html("New Game");
         $("#random_circ").css("display","none");
-        $("#turns").html($("#game").data("options")["turns"]);
+        $("#turns").html($("#game").data("turns_left"));
       }
       else
       {
@@ -171,20 +184,24 @@ function set_game_param(button, id)
         but.style.color = hexid;
         // Reset the answer sliders
         r_slider.value = g_slider.value = b_slider.value = 127;
+        r_output.innerHTML = "Red: " + r_slider.value;
+        g_output.innerHTML = "Green: " + g_slider.value;
+        b_output.innerHTML = "Blue: " + b_slider.value;
         $("#answer").css("backgroundColor","#7f7f7f");
         // Update turns left
-        $("#turns").html($("#game").data("options")["turns"]--);
+        $("#turns").html($("#game").data("turns_left"));
+        $("#game").data("turns_left", $("#game").data("turns_left")-1);
         // Scoreing calculation
-        var time = new Date();
-        if ((!$("#game").data("s_time")) || ($("#game").data("s_time") == -1))
+        if ($("#random_circ").html() == "Next")
         {
-          $("#game").data("s_time", time);
+          $("#game").data("s_time", new Date());
+          $("#random_circ").html("Check it!");
         }
         else
-        {
+        { // It would be Check it button here
           var milliseconds_taken = new Date() - $("#game").data("s_time");
           var difficulty = Number($("#game").data("options")["difficulty"]);
-          $("#game").data("s_time", -1);
+          //$("#game").data("s_time", -1);
           //Calculate percentage
           let percentRed = (Math.abs(r_slider.value - are) / 255) * 100;
           let percentGreen = (Math.abs(g_slider.value - ge) / 255) * 100;
@@ -194,35 +211,37 @@ function set_game_param(button, id)
 
           //Calculate final score
           var finalScore = ((15 - difficulty - avgPercentOff)/(15 - difficulty))*(15000 - milliseconds_taken);
-          console.log("d" + difficulty.toString(10));
-          console.log("p" + avgPercentOff.toString(10));
-          console.log("m" + (15000 - milliseconds_taken).toString(10));
-          console.log("15-d-p" + (15 - difficulty - avgPercentOff).toString(10));
-          console.log("15-d" + (15 - difficulty).toString(10));
-          console.log("final" + (finalScore).toString(10));
           finalScore = (finalScore < 0 ? 0:Number(finalScore.toFixed(2)));
           //appending final score to the user
           finalScore += Number(document.getElementById("scoreTotal").innerHTML);
           document.getElementById("scoreTotal").innerHTML = finalScore;
+          $("#random_circ").html("Next");
+          $("#percentOff").html("<li>Percent Off Red: "+percentRed.toFixed(2)+"%</li><li>Percent Off Green: "+percentGreen.toFixed(2)+"%</li><li>Percent Off Blue: "+percentBlue.toFixed(2)+"%</li>");
         }
       }      
     });   
     });
+return obj;
   };
 
   $.fn.hexed = function ( settings )
   { // difficulty is in options.difficulty  turns is in options.turns
-    var options = $.extend({"difficulty":5, "turns":10}, settings);
-    if ($("#start").html() == "Restart")
-    {
-      $("body").empty().restart();
+    var options = $.extend({}, $.fn.options, settings);
+    if (!$("#start").length)
+    { // If it is the first time calling this function, initialize it
+      $(this).restart();
+      $("#game").data("main", this.selector);
+    }
+    else if ($("#start").html() == "Restart")
+    { // If the "Restart" button was clicked, empty the element and 
+      $($("#game").data("main")).empty().restart();
     }
     else if ($("#difficulty_val").attr("disabled") && $("#num_of_turns").attr("disabled"))
     { // If they are both set, start the game.
       document.getElementById("start").innerHTML="Restart";
       $("#random_circ").css("display","block");
-      this.data("options", options);
-      this.data("turns_left", options["turns"]);
+      $("#game").data("options", options);
+      $("#game").data("turns_left", Number(options["turns"]));
       $("#random_circ").trigger("click");
       $("#scoreTotal").empty();
     }

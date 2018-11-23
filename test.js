@@ -240,7 +240,6 @@
       $(this).append("<div id=\"page-wrapper\"></div>");
       $.fn.defaults.game_elem = $("#page-wrapper");
       $.fn.defaults.set_options(options).restart();
-      //$("#game").data("main", this.selector);
     }
     else if ($("#start").html() == "Restart")
     { // If the "Restart" button was clicked, reload the entire page's content

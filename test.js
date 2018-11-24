@@ -35,7 +35,7 @@
             <p class="right">Your Guess</p>\
           </div>\
           <div id="game">\
-            <form action=\"http://hack.and.slash/test.php\" method=\"post\">\
+            <form>\
               <div id="difficulty">\
                 <label for="difficulty_val">Difficulty</label>\
                 <select id="difficulty_val" required>\
@@ -55,10 +55,9 @@
               </div>\
               <div>\
                 <label for="num_of_turns">Desired Number oF Turns</label>\
-                <input type="number" id="num_of_turns" min="1" value="10" name=\"num_of_turns\">\
+                <input type="number" id="num_of_turns" min="1" value="10">\
                 <button id="submit_num_turns" type="button" onclick="$(this).set_game_param($(\'#num_of_turns\'));">Confirm</button>\
               </div>\
-              <input type=\"submit\" value=\"submit\">\
             </form>\
             <button type=\'button\' id=\'start\' onclick=\'$(\"#game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>\
           </div>\

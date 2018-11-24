@@ -6,13 +6,14 @@
       turns:10
     },
     game_state : {
+      curr_difficulty : 5,
       turns_left : 0,
       start_time : 0
     },
     set_options : function (options)
-    {
-      this.options.difficulty = options.difficulty;
-      this.game_state.turns_left = this.options.turns = options.turns;
+    { // Has to return $.fn.defaults
+      this.game_state.curr_difficulty = options.difficulty;
+      this.game_state.turns_left = options.turns;
       return this;
     },
     restart : function()
@@ -22,7 +23,7 @@
       $(document).ready(function(){
         data.game_elem.html('<h1>Let\'s play Hexed!</h1>\
           <h2>Here\'s how to play:</h2>\
-          <p>Use the sliders to choose...... blah blah blah</p>\
+          <p>First commit your difficulty and number of turns, then hit start. If you want to restart at anytime, press the restart button. For each turn, press the \"checkit\" button to submit your solution for that turn and click "next" for the next color. Your goal is to move the three sliders so your guess on the provided color is as close as possible. Your score is determined on how quickly you provide an answer and how accurate your color guess is.</p>\
           <div id = "container">\
             <div id = "colors">\
               <span class="dot" id = "random"></span>\
@@ -34,7 +35,7 @@
             <p class="right">Your Guess</p>\
           </div>\
           <div id="game">\
-            <form>\
+            <form action=\"http://hack.and.slash/test.php\" method=\"post\">\
               <div id="difficulty">\
                 <label for="difficulty_val">Difficulty</label>\
                 <select id="difficulty_val" required>\
@@ -54,9 +55,10 @@
               </div>\
               <div>\
                 <label for="num_of_turns">Desired Number oF Turns</label>\
-                <input type="number" id="num_of_turns" min="1" value="10"></input>\
+                <input type="number" id="num_of_turns" min="1" value="10" name=\"num_of_turns\">\
                 <button id="submit_num_turns" type="button" onclick="$(this).set_game_param($(\'#num_of_turns\'));">Confirm</button>\
               </div>\
+              <input type=\"submit\" value=\"submit\">\
             </form>\
             <button type=\'button\' id=\'start\' onclick=\'$(\"#game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>\
           </div>\
@@ -144,8 +146,6 @@
             var b = (be).toString(16);
             var b_inv = (255 - be).toString(16);
             var hexid = "#" + r + g + b;
-            //var hexid_inv = "#" + r_inv + g_inv + b_inv;
-            //console.log(hexid);
             // Set the colors of the random circle and the next button
             var dot = document.getElementById("random");
             dot.style.backgroundColor = hexid;
@@ -158,8 +158,8 @@
             b_output.innerHTML = "Blue: " + b_slider.value;
             $("#answer").css("backgroundColor","#7f7f7f");
             // Update turns left
-            $("#turns").html(data.game_state.turns_left);
-            $("#game").data("turns_left", data.game_state.turns_left--);
+            $("#turns").html(data.game_state.turns_left--);
+
             // Scoreing calculation
             if ($("#random_circ").html() == "Next")
             {
@@ -169,8 +169,7 @@
             else
             { // It would be Check it button here
               var milliseconds_taken = new Date() - data.game_state.start_time;
-              var difficulty = data.options.difficulty;
-              //$("#game").data("s_time", -1);
+              var difficulty = data.game_state.curr_difficulty;
               //Calculate percentage
               let percentRed = (Math.abs(r_slider.value - are) / 255) * 100;
               let percentGreen = (Math.abs(g_slider.value - ge) / 255) * 100;

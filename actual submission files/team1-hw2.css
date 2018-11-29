@@ -1,0 +1,162 @@
+body {
+    height: 100%;
+    background-color: gray;
+}
+
+#page-wrapper {
+    margin: auto;
+    width: 700px;
+    background-color: white;
+    height:1000px;
+    box-shadow: 5px 10px 8px #000000;
+}
+
+h1, h2
+{
+  text-align: center;
+}
+
+#turns_left, #score, #list {
+    text-align: center;
+    border:1px solid black;
+}
+
+#percentOff
+{
+  list-style:none;
+}
+
+.dot {
+  height: 200px;
+  width: 200px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#colors {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+#container {
+  background-color: black;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+#random {
+  margin-right: 10px;
+}
+
+footer {
+  position:relative;
+  font-size:10px;
+  text-align:center;
+  top:35%
+}
+
+#random_circ {
+  margin-right: 10%;
+  margin-left: auto;
+  display: block;
+  /*background-color: black;*/
+  text-shadow:2px 1px black;
+  height: 40px;
+  font-size:1.3em;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+#red_value, #green_value, #blue_value {
+
+}
+
+.left {
+	float: left;
+	width: 50%;
+	height: 70px;
+}
+.right {
+	float: right;
+	width: 50%;
+	height: 70px;
+}
+/*
+#color {
+	border-style: solid;
+	border-width: 3px;
+	border-radius: 15px;
+	background-color: #000000;
+}
+*/
+form
+{
+  display:block;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 15px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+#red, #green, #blue{
+	float: left;
+    clear: left;
+    width: 300px;
+}
+
+#red.slider::-webkit-slider-thumb{
+	background: red;
+}
+#green.slider::-webkit-slider-thumb{
+	background: green;
+}
+#blue.slider::-webkit-slider-thumb{
+	background: blue;
+}
+
+#scoreTotal {
+  font-size: 30px;
+  text-align:center;
+}
+
+#label
+{
+  text-align:center;
+}

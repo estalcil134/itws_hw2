@@ -35,7 +35,7 @@
       $(document).ready(function(){
         data.game_elem.html('<h1>Let\'s play Hexed!</h1>\
           <h2>Here\'s how to play:</h2>\
-          <p>First commit your difficulty and number of turns, then hit start. If you want to restart at anytime, press the restart button. For each turn, press the \"checkit\" button to submit your solution for that turn and click "next" for the next color. Your goal is to move the three sliders so your guess on the provided color is as close as possible. Your score is determined on how quickly you provide an answer and how accurate your color guess is.</p>\
+          <p class = "left_space">First commit your difficulty and number of turns, then hit start. If you want to restart at anytime, press the restart button. For each turn, press the \"checkit\" button to submit your solution for that turn and click "next" for the next color. Your goal is to move the three sliders so your guess on the provided color is as close as possible. Your score is determined on how quickly you provide an answer and how accurate your color guess is.</p>\
           <div id = "container">\
             <div id = "colors">\
               <span class="dot" id = "random"></span>\
@@ -44,9 +44,9 @@
           </div>\
           <div id="label">\
             <p class="left">Color:</p>\
-            <p class="right">Your Guess</p>\
+            <p class="right">Your Guess:</p>\
           </div>\
-          <div id="game">\
+          <div id="game" class = "left_space">\
             <form>\
               <div id="difficulty">\
                 <label for="difficulty_val">Difficulty</label>\
@@ -73,7 +73,7 @@
             </form>\
             <button type=\'button\' id=\'start\' onclick=\'$(\"#game\").hexed({\"difficulty\":$(\"#difficulty_val\").val(), \"turns\":$(\"#num_of_turns\").val()});\'>Start</button>\
           </div>\
-          <div class="left">\
+          <div class="left left_space">\
             <p id="red_value"></p>\
             <input type="range" min="0" max="255" value="127" class="slider" id="red">\
             <br/>\
@@ -86,16 +86,16 @@
             <p id="hex_value"></p>\
             <br/>\
           </div>\
-          <div class="right">\
+          <div class="right right_space">\
             <button type="button" id = "random_circ" style="display:none">Next</button>\
             <h2 id="turns_left">Turns Left: <span id="turns"></span></h2>\
             <h2 id="score">Score:<p id="scoreTotal">0</p></h2>\
             <div id="list">\
               <h2>Percents Off:</h2>\
               <ul id="percentOff"></ul>\
-            </div>\
+            </div><footer>Made by Team 1</footer>\
           </div>\
-        <footer>Made by Team 1</footer>');
+        ');
         // Generate the sliders
         var r_slider = document.getElementById("red");
         var g_slider = document.getElementById("green");

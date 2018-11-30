@@ -80,14 +80,18 @@ footer {
 }
 
 .left {
+  clear: left;
 	float: left;
 	width: 50%;
 	height: 70px;
+  
 }
 .right {
+  clear: right;
 	float: right;
 	width: 50%;
 	height: 70px;
+  
 }
 /*
 #color {
@@ -101,7 +105,10 @@ form
 {
   display:block;
 }
-
+footer {
+  text-align: center;
+  width: 300px;
+}
 .slider {
     -webkit-appearance: none;
     width: 100%;
@@ -134,7 +141,13 @@ form
     background: #4CAF50;
     cursor: pointer;
 }
-
+.left_space {
+  margin-left: 10px;
+}
+.right_space {
+  margin-right: 10px;
+  width: 300px;
+}
 #red, #green, #blue{
 	float: left;
     clear: left;

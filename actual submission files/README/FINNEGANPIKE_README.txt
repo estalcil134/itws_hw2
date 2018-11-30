@@ -1,0 +1,7 @@
+Finnegan Pike - pikef:
+
+1.) An advantage of making a jQuery plugin instead of just using regular JavaScript that uses jQuery is that it is easier for a developer to use a plugin rather than having to write their own Javascript to perform the same functions. This way they can utilize the jQeuery library instead of recreating the wheel and rewriting their own plugin. (although writing JavaScript makes for better performance since it does not come with the same jQuery overhead).
+
+2.) Our jQuery plugin adheres to best practices for JavaScript and jQuery development by having the scripts be included in the html at the bottom of the body (this way the html is served first and then the JavaScript is deliverd later), the code is well commented and organized, and we utilize our own jQuery library so that the website doesn't deal with web traffic including an online library.
+
+3.) The problem with posting scores to a server on a different domain is that jQuery/JavaScript is a front-end, client side program, and in order for another domain to be affected by the code of our website, there would need to be some back-end code. This would probably be php, which could post the high score to a database, which can be served to the user in a different domain. This way the server can actually be affeted by a post.
